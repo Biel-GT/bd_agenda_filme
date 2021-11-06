@@ -45,18 +45,18 @@ try {
 		</div>
 	</div>
 	<main>
-		<h1>Agendar Serie</h1>
-		<form action="arquivos_php/agendar_serie.php" method="post">
-			Nome da Serie: <input type="text" name="nome_serie" id="nome_serie"><br>
-			Gênero: <input type="text" name="genero_serie" id="genero_serie"><br>
-			Descrição: <input type="text" name="desc_serie" id="desc_serie"><br>
-			Data para agendamento: <input type="date" name="data_agenda_serie" id="data_agenda_serie"><br>
-
-			<input type="submit" value="Agendar">
+		<h1>Login</h1>
+		<form action="arquivos_php/login.php" method="post">
+			Email: <input type="text" name="email" id="email"><br>
+			Senha: <input type="text" name="senha" id="senha"><br>
+			<input type="submit" value="Entrar">
 		</form>
 
-		<a href="inicial.php">Voltar</a>
+		<?php
+		echo "<a href='formCadastro.php'>Novo Cadastro</a><br><br>";
+		?>
 	</main>
+
 </body>
 
 </html>
