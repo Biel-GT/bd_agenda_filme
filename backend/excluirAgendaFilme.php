@@ -8,7 +8,7 @@ try {
 	$delete->bindParam(':id', $id);
 	$delete->execute();
 
-	header("location: ../index.php");
+	header("location: ../frontend/index.php");
 
 } catch (PDOException $e) {
 

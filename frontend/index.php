@@ -1,5 +1,5 @@
 <?php
-include_once "arquivos_php/conexão.php";
+include_once "../backend/conectar.php";
 
 try {
 
@@ -27,7 +27,7 @@ try {
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../src/css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -39,21 +39,23 @@ try {
 		<div class="container">
 			<nav>
 				<a href="inicial.php">
-					<img src="img/img-navbar.png" alt="">
+					<img src="../src/img/img-navbar.png" alt="">
 				</a>
 			</nav>
 		</div>
 	</div>
 	<main>
-		<h1>Login</h1>
-		<form action="arquivos_php/login.php" method="post">
-			Email: <input type="text" name="email" id="email"><br>
-			Senha: <input type="text" name="senha" id="senha"><br>
-			<input type="submit" value="Entrar">
-		</form>
+		<h1>Página Inicial</h1>
+
+		<!-- AGENDAMENTOS SÓ DO USUÁRIO -->
+		<a href="visualizarAgenda.php">Visualizar Agendamentos</a>
+
+		<a href="formAgendaFilme.php">Agendar filme</a>
+
+		<a href="formAgendaSerie.php">Agendar série</a>
 
 		<?php
-		echo "<a href='formCadastro.php'>Novo Cadastro</a><br><br>";
+		//echo "<a href='formCadastro.php'>Novo Cadastro</a><br><br>";
 		?>
 	</main>
 

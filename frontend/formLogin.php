@@ -1,5 +1,5 @@
 <?php
-include_once "arquivos_php/conexão.php";
+include_once "../backend/conectar.php";
 
 try {
 
@@ -27,7 +27,7 @@ try {
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../src/css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -39,23 +39,24 @@ try {
 		<div class="container">
 			<nav>
 				<a href="inicial.php">
-					<img src="img/img-navbar.png" alt="">
+					<img src="../src/img/img-navbar.png" alt="">
 				</a>
 			</nav>
 		</div>
 	</div>
 	<main>
-		<h1>Cadastro</h1>
-		<form action="arquivos_php/cadastrar.php" method="post">
-			Nome: <input type="text" name="nome_usu" id="nome_usu"><br>
-			Sobrenome: <input type="text" name="sobrenome_usu" id="sobrenome_usu"><br>
-			Email: <input type="text" name="email_usu" id="email_usu"><br>
-			Senha: <input type="text" name="senha_usu" id="senha_usu"><br>
-			Repita a senha: <input type="text" name="rsenha_usu" id="rsenha_usu"><br>
-			Telefone: <input type="text" name="telefone_usu" id="telefone_usu"><br>
-			<input type="submit" value="Cadastrar">
+		<h1>Login</h1>
+		<form action="../backend/login.php" method="post">
+			Email: <input type="text" name="email" id="email"><br>
+			Senha: <input type="text" name="senha" id="senha"><br>
+			<input type="submit" value="Entrar">
 		</form>
+
+		<?php
+		echo "<a href='formCadastro.php'>Novo Cadastro</a><br><br>";
+		?>
 	</main>
+
 </body>
 
 </html>

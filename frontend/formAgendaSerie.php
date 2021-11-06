@@ -1,5 +1,5 @@
 <?php
-include_once "arquivos_php/conexão.php";
+include_once "../backend/conectar.php";
 
 try {
 
@@ -27,7 +27,7 @@ try {
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../src/css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -38,24 +38,24 @@ try {
 	<div class="navBar">
 		<div class="container">
 			<nav>
-				<a href="inicial.php">
-					<img src="img/img-navbar.png" alt="">
+				<a href="index.php">
+					<img src="../src/img/img-navbar.png" alt="">
 				</a>
 			</nav>
 		</div>
 	</div>
 	<main>
-		<h1>Agendar Filme</h1>
-		<form action="arquivos_php/cadastrar.php" method="post">
-			Nome do filme: <input type="text" name="nome_filme" id="nome_filme"><br>
-			Gênero: <input type="text" name="genero_filme" id="genero_filme"><br>
-			Descrição: <input type="text" name="desc_filme" id="desc_filme"><br>
-			Data para agendamento: <input type="date" name="data_agenda_filme" id="data_agenda_filme"><br>
+		<h1>Agendar Serie</h1>
+		<form action="../backend/adicionarAgendaSerie.php" method="post">
+			Nome da Serie: <input type="text" name="nome_serie" id="nome_serie"><br>
+			Gênero: <input type="text" name="genero_serie" id="genero_serie"><br>
+			Descrição: <input type="text" name="desc_serie" id="desc_serie"><br>
+			Data para agendamento: <input type="date" name="data_agenda_serie" id="data_agenda_serie"><br>
 
 			<input type="submit" value="Agendar">
 		</form>
 
-		<a href="inicial.php">Voltar</a>
+		<a href="index.php">Voltar</a>
 	</main>
 </body>
 

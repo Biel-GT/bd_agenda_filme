@@ -12,7 +12,7 @@ try {
 	$update->bindParam(':login', $login);
 	$update->execute();
 
-	header("location: ../index.php");
+	header("location: ../frontend/index.php");
 
 } catch (PDOException $e) {
 

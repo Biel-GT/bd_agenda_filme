@@ -11,7 +11,7 @@
 		$insert->bindParam(':login', $login);
 		$insert->execute();
 
-		header("location: ../formLogin.php");
+		header("location: ../frontend/formLogin.php");
 
 	} catch (PDOException $e) {
 
