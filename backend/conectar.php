@@ -2,7 +2,7 @@
 	try {
 
 		//Faz conexão com o BD
-		$conectar = new PDO("mysql:rost=localhost;port=3306;dbname=bd_agenda_filme;", "root", "");
+		$conectar = new PDO("mysql:host=localhost;port=3306;dbname=bd_agenda_filme;", "root", "");
 		
 	} catch (PDOException $e) {
 

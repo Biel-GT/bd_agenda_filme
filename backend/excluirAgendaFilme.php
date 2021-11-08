@@ -1,5 +1,5 @@
 <?php
-include_once "conexão.php";
+include_once "conectar.php";
 
 try {
 	$id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
