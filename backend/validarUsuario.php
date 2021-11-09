@@ -30,6 +30,7 @@
             
             try {
                 $nick = $_POST['nick'];
+                setcookie('nick', $nick, time()+3600, "/");
                 $select = "SELECT * FROM usu WHERE nick =:nick";
                 $query = $conectar->prepare($select);
                 $query->bindParam(':nick', $nick, PDO::PARAM_STR);

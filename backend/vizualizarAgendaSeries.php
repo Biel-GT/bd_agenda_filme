@@ -27,7 +27,29 @@
 	</div>
 	<main>
         <?php
-            
+            try {
+                //echo $_COOKIE['nick']."<br><br>";
+                $nick = $_COOKIE['nick'];
+                $agendaSerie = "SELECT * FROM agenda_serie INNER JOIN serie ON agenda_serie.id_serie = serie.id_serie WHERE nick=:nick";
+                $query = $conectar->prepare($agendaSerie);
+                $query->bindParam(':nick', $nick, PDO::PARAM_STR);
+                $query->execute();
+                $contagem = $query->rowCount();
+                if($contagem > 0){
+                    echo "Foram encontrados agendamentos para $nick.<br><br>";
+                    echo "<table border='1px'><tr><td>Nick</td><td>Filme</td><td>Data agendada</td></tr>";
+                    while($linha = $query->fetch()) {
+                        print_r("<tr><td>$linha[nick]</td><td>$linha[nome_serie]</td><td>$linha[data_agenda_serie]</td></tr>");   
+                    }
+                    echo "</table><br>";
+                    echo "<br>" . $contagem . " Agendamentos<br><br>";
+                }
+                else{
+                    echo "Não foram encontrados registros, favor realizar seu agendamento.<br><br>";
+                } 
+            } catch (PDOException $e) {
+                echo "Erro: " . $e->getMessage();
+            }
         ?>
         <a class="links-button" href="../frontend/visualizarAgenda.html">Voltar</a>
 	</main>
