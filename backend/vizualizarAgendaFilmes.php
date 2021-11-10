@@ -38,7 +38,7 @@
                     echo "Foram encontrados agendamentos para $nick.<br><br>";
                     echo "<table border='1px'><tr><td>Nick</td><td>Filme</td><td>Data agendada</td></tr>";
                     while($linha = $query->fetch()) {
-                        print_r("<tr><td>$linha[nick]</td><td>$linha[nome_filme]</td><td>$linha[data_agenda_filme]</td></tr>");   
+                        print_r("<tr><td>$linha[nick]</td><td>$linha[nome_filme]</td><td>$linha[data_agenda_filme]</td><td><a href='editarAgendaFilme'>Editar</a></td><td><a href='excluirAgendaFilme'>Excluir</a></td></tr>");   
                     }
                     echo "</table><br>";
                     echo "<br>" . $contagem . " Agendamentos<br><br>";
@@ -52,7 +52,5 @@
         ?>
         <a class="links-button" href="../frontend/visualizarAgenda.html">Voltar</a>
 	</main>
-
 </body>
-
 </html>

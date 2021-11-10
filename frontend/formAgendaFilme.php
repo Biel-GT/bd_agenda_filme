@@ -1,27 +1,3 @@
-<?php
-include_once "../backend/conectar.php";
-
-try {
-
-	//Execução da instrução sql
-	$conexao = $conectar;
-
-	/*echo "<table border='1px'><tr><td>Nome</td><td>Login</td><td>Ações</td></tr>";
-
-		while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
-			//FETCH ASSOC percorre todas os registros do banco de dados e retorna pra mim
-
-			echo "<tr><td>$linha[nome]</td><td>$linha[login]</td><td><a href='formEditar.php?id=$linha[id]'>Editar</a> - <a href='excluir.php?id=$linha[id]'>Excluir</td></tr>";
-		}
-
-		echo "</table>";
-
-		echo $consulta->rowCount() . " Registros Exibidos";*/
-} catch (PDOException $e) {
-
-	echo $e->getMessage();
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -31,14 +7,14 @@ try {
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
 	<div class="navBar">
 		<div class="container">
 			<nav>
-				<a href="inicial.php">
+				<a href="index.html">
 					<img src="../src/img/img-navbar.png" alt="">
 				</a>
 			</nav>
@@ -46,16 +22,18 @@ try {
 	</div>
 	<main>
 		<h1>Agendar Filme</h1>
+        <?php
+			include_once("../backend/vizualizarFilme.php");
+		?>
 		<form action="../backend/adicionarAgendaFilme.php" method="post">
-			Nome do filme: <input type="text" name="nome_filme" id="nome_filme"><br>
-			Gênero: <input type="text" name="genero_filme" id="genero_filme"><br>
-			Descrição: <input type="text" name="desc_filme" id="desc_filme"><br>
+			Id do filme: <input type="text" name="id_filme" id="id_filme"><br>
+			Nick: <input type="text" name="nick" id="nick"><br>
 			Data para agendamento: <input type="date" name="data_agenda_filme" id="data_agenda_filme"><br>
 
-			<input type="submit" value="Agendar">
+			<input class="links-button" type="submit" value="Agendar">
 		</form>
-
-		<a href="index.php">Voltar</a>
+		<br><br>
+		<a class="links-button" href="dashboard.html">Voltar</a>
 	</main>
 </body>
 
