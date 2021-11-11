@@ -1,0 +1,59 @@
+create database bd_agenda;
+
+use bd_agenda;
+
+CREATE TABLE `usu` (
+  `nick` varchar(15) NOT NULL,
+  `telefone` bigint DEFAULT NULL,
+  PRIMARY KEY (`nick`)
+);
+
+CREATE TABLE `serie` (
+  `id_serie` int NOT NULL AUTO_INCREMENT,
+  `nome_serie` varchar(30) NOT NULL,
+  `genero_serie` varchar(20) NOT NULL,
+  `desc_serie` varchar(120) NOT NULL,
+  PRIMARY KEY (`id_serie`)
+) AUTO_INCREMENT=1;
+
+CREATE TABLE IF NOT EXISTS `filme` (
+  `id_filme` int NOT NULL AUTO_INCREMENT,
+  `nome_filme` varchar(30) NOT NULL,
+  `genero_filme` varchar(20) NOT NULL,
+  `desc_filme` varchar(120) NOT NULL,
+  PRIMARY KEY (`id_filme`)
+) AUTO_INCREMENT=1;
+
+CREATE TABLE IF NOT EXISTS `agenda_serie` (
+  `id_agenda_serie` int NOT NULL AUTO_INCREMENT,
+  `id_serie` int NOT NULL,
+  `nick` varchar(15) NOT NULL,
+  `data_agenda_serie` date NOT NULL,
+  PRIMARY KEY (`id_agenda_serie`),
+  KEY `id_serie` (`id_serie`),
+  KEY `nick` (`nick`)
+) AUTO_INCREMENT=1;
+
+CREATE TABLE IF NOT EXISTS `agenda_filme` (
+  `id_agenda_filme` int NOT NULL AUTO_INCREMENT,
+  `id_filme` int NOT NULL,
+  `nick` varchar(15) NOT NULL,
+  `data_agenda_filme` date NOT NULL,
+  PRIMARY KEY (`id_agenda_filme`),
+  KEY `id_filme` (`id_filme`),
+  KEY `nick` (`nick`)
+) AUTO_INCREMENT=1;
+
+INSERT INTO `filme` (`nome_filme`, `genero_filme`, `desc_filme`) VALUES
+('Homem-Aranha 2', 'Ação/Aventura', 'Quando uma falha na experiência de fusão nuclear resulta em uma explosão que mata sua esposa, o Dr. Otto Octavius é tran'),
+('Até o Último Homem', 'Guerra/Drama', 'Acompanhe a história de Desmond T. Doss, um médico do exército americano que, durante a Segunda Guerra Mundial, se recus'),
+('Star Wars: O Império Contra-ataca', 'Aventura/Ficção Científica', 'As forças imperais comandadas por Darth Vader lançam um ataque contra os membros da resistência. Luke Skywalker tenta encontrar o Mestre Yoda, que po'),
+('Intocáveis', 'Drama', 'Um aristocrata fica tetraplégico após um grave acidente, contratando um assistente que não tem a menor experiência em cuidar de pessoas. Ao'),
+('À Procura da Felicidade', 'Drama', 'Chris enfrenta sérios problemas financeiros e Linda, sua esposa, decide partir. Ele agora é pai solteiro e precisa cuidar de Christopher, seu filho');
+
+INSERT INTO `serie` (`nome_serie`, `genero_serie`, `desc_serie`) VALUES
+('The Flash', 'Drama', 'Acompanhe as aventuras do homem mais veloz do planeta, o cientista da Central City Police Barry Allen, que após um trági'),
+('Brooklyn Nine-Nine', 'Sitcom/Comédia', 'Jake Peralta é um detetive brilhante e ao mesmo tempo imaturo, que nunca precisou se preocupar em respeitar as regras. T'),
+('La casa de papel', 'Thriller', 'Um grupo de nove ladrões, liderados por um Professor, prepara o roubo do século na Casa da Moeda da Espanha, com o objetivo de fabricar o próprio din'),
+('Lupin', 'Mistério', 'Inspirado pelas aventuras de Arsène Lupin, o ladrão gentil Assane Diop quer se vingar de uma família rica por uma injustiça cometida contra o pai del'),
+('Expresso do Amanhã', 'Drama', 'Em um mundo congelado, os últimos habitantes da Terra se esforçam para viver em uma sociedade complexa dentro de um trem que está em constante movime');
