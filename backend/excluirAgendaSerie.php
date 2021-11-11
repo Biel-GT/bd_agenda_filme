@@ -1,21 +1,20 @@
 <?php
-/*include_once "conectar.php";
-
-try {
-	$id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-
-	$delete = $conectar->prepare("DELETE FROM login WHERE id = :id");
-	$delete->bindParam(':id', $id);
-	$delete->execute();
-
-	header("location: ../frontend/index.php");
-
-} catch (PDOException $e) {
-
-	echo "Erro: " . $e->getMessage();;
+include_once "conectar.php";
+$id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 	
+$query_del_agenda_serie="DELETE FROM agenda_serie where id_agenda_serie = $id";
+$apagar_agenda_serie = $conectar->prepare($query_del_agenda_serie);
+$apagar_agenda_serie->execute();
+$linha = $apagar_agenda_serie->rowCount();
+if($linha > 0)
+{
+	echo "<script>alert('Apagado com sucesso');
+	location.href='vizualizarAgendaSeries.php';</script>";
 }
-*/
+else{
+	echo "<script>alert('Não apagado');
+	location.href='vizualizarAgendaSeries.php';</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,7 +39,5 @@ try {
 			</nav>
 		</div>
 	</div>
-	<main>
-	</main>
 </body>
 </html>

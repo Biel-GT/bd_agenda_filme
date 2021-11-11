@@ -1,6 +1,5 @@
 <?php
     include_once('conectar.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,7 +11,6 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -27,7 +25,6 @@
 	</div>
 	<main>
         <?php
-            
             try {
                 $nick = $_POST['nick'];
                 setcookie('nick', $nick, time()+3600, "/");
@@ -49,12 +46,8 @@
             } catch (PDOException $e) {
                 echo "Erro: " . $e->getMessage();
             }
-        
-           
         ?>
         <a class="links-button" href="../frontend/dashboard.html">Voltar</a>
 	</main>
-
 </body>
-
 </html>

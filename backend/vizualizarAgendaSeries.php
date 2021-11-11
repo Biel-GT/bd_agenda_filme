@@ -1,6 +1,5 @@
 <?php
     include_once('conectar.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,7 +27,6 @@
 	<main>
         <?php
             try {
-                //echo $_COOKIE['nick']."<br><br>";
                 $nick = $_COOKIE['nick'];
                 $agendaSerie = "SELECT * FROM agenda_serie INNER JOIN serie ON agenda_serie.id_serie = serie.id_serie WHERE nick=:nick";
                 $query = $conectar->prepare($agendaSerie);
@@ -39,7 +37,7 @@
                     echo "Foram encontrados agendamentos para $nick.<br><br>";
                     echo "<table border='1px'><tr><td>Nick</td><td>Filme</td><td>Data agendada</td></tr>";
                     while($linha = $query->fetch()) {
-                        print_r("<tr><td>$linha[nick]</td><td>$linha[nome_serie]</td><td>$linha[data_agenda_serie]</td></tr>");   
+                        print_r("<tr><td>$linha[nick]</td><td>$linha[nome_serie]</td><td>$linha[data_agenda_serie]</td><td><a href='../frontend/formEditarAgendaSerie.php'>Editar</a></td><td><a href='excluirAgendaSerie.php?id=<?php echo $linha[id_agenda_serie]; ?>' onclick='return confirm('Tem certeza que deseja deletar este agendamento?')'>Excluir</a></td></tr>");   
                     }
                     echo "</table><br>";
                     echo "<br>" . $contagem . " Agendamentos<br><br>";

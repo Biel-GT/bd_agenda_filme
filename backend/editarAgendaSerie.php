@@ -1,26 +1,5 @@
 <?php
-/*
-include_once "conectar.php";
-
-try {
-	$id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
-	$nome = filter_var($_POST['nome']);
-	$login = filter_var($_POST['login']);
-
-	$update = $conectar->prepare("UPDATE login SET nome = :nome, login = :login WHERE id = :id");
-	$update->bindParam(':id', $id);
-	$update->bindParam(':nome', $nome);
-	$update->bindParam(':login', $login);
-	$update->execute();
-
-	header("location: ../frontend/index.php");
-
-} catch (PDOException $e) {
-
-	echo "Erro: " . $e->getMessage();;
-	
-}
-*/
+include_once("conectar.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,6 +25,34 @@ try {
 		</div>
 	</div>
 	<main>
+<?php
+	$id_serie = filter_var($_POST['id_serie'], FILTER_SANITIZE_NUMBER_INT);
+	$nick = filter_var($_POST['nick']);
+	$data_agenda_serie = filter_var($_POST['data_agenda_serie']);
+	if(empty($_POST['Editar']))
+	{	
+		$empty_input = false;
+		if (!$empty_input)
+		{
+			$query_up_Agenda_serie="UPDATE agenda_serie SET data_agenda_serie=:data_agenda_serie, id_serie=:id_serie where nick=:nick";
+			$edit = $conectar->prepare($query_up_Agenda_serie);
+			$edit->bindParam(':data_agenda_serie', $data_agenda_serie, PDO::PARAM_STR);
+			$edit->bindParam(':nick', $nick, PDO::PARAM_STR);
+			$edit->bindParam(':id_serie', $id_serie, PDO::PARAM_INT);
+			$edit->execute();	
+			$linha = $edit->rowCount();
+			if(!$linha > 0){
+				echo "<script>alert('Erro ao editar, tente novamente!');
+				location.href='../frontend/visualizarAgenda.html';</script>";
+			}
+			else
+			{
+				echo "<script>alert('Editado com sucesso!');
+				location.href='../frontend/visualizarAgenda.html';</script>";
+			}
+		}
+	}
+	?>
 	</main>
-</body>
+</body> 
 </html>

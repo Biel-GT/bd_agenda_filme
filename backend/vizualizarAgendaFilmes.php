@@ -27,7 +27,6 @@
 	<main>
         <?php
             try {
-                //echo $_COOKIE['nick']."<br><br>";
                 $nick = $_COOKIE['nick'];
                 $agendaFilme = "SELECT * FROM agenda_filme INNER JOIN filmes ON agenda_filme.id_filme = filmes.id_filme WHERE nick=:nick";
                 $query = $conectar->prepare($agendaFilme);
@@ -38,7 +37,7 @@
                     echo "Foram encontrados agendamentos para $nick.<br><br>";
                     echo "<table border='1px'><tr><td>Nick</td><td>Filme</td><td>Data agendada</td></tr>";
                     while($linha = $query->fetch()) {
-                        print_r("<tr><td>$linha[nick]</td><td>$linha[nome_filme]</td><td>$linha[data_agenda_filme]</td><td><a href='editarAgendaFilme'>Editar</a></td><td><a href='excluirAgendaFilme'>Excluir</a></td></tr>");   
+                        print_r("<tr><td>$linha[nick]</td><td>$linha[nome_filme]</td><td>$linha[data_agenda_filme]</td><td><a href='../frontend/formEditarAgendaFilme.php'>Editar</a></td><td><a href='excluirAgendaFilme.php?id=<?php echo $linha[id_agenda_filme]; ?>' onclick='return confirm('Tem certeza que deseja deletar este agendamento?')'>Excluir</a></td></tr>");   
                     }
                     echo "</table><br>";
                     echo "<br>" . $contagem . " Agendamentos<br><br>";

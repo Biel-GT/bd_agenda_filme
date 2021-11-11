@@ -12,10 +12,12 @@
 		$insert->execute();	
 		$linha = $insert->rowCount();
 		if(!$linha > 0){
-			echo "<script>alert('Erro ao realizar o agendamento, favor tentar novamente!')</script>";
+			echo "<script>alert('Erro ao realizar o agendamento, favor tentar novamente!');
+			location.href='../frontend/formAgendaSerie.php';</script>";
 		}
 		else{
-			echo "<script>alert('Agendamento realizado com sucesso!')</script>";
+			echo "<script>alert('Agendamento realizado com sucesso!');
+			location.href='../frontend/formAgendaSerie.php';</script>";
 		}
     }
 	catch(PDOException $e) {
@@ -46,10 +48,6 @@
 			</nav>
 		</div>
 	</div>
-	<main>
-		<a class="links-button" href="../frontend/dashboard.html">Retornar para o Dashboard</a>
-	</main>
-
 </body>
 
 </html>

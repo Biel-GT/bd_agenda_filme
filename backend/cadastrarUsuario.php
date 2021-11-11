@@ -11,10 +11,12 @@
 		$insert->execute();	
 		$linha = $insert->rowCount();
 		if(!$linha > 0){
-			echo "<script>alert('Nick já utilizado, tente com outro Nick.')</script>";
+			echo "<script>alert('Nick já utilizado, tente com outro Nick.');
+			location.href='../frontend/formCadastroUsuario.html';</script>";
 		}
 		else{
-			echo "<script>alert('Cadastro realizado com sucesso!')</script>";
+			echo "<script>alert('Cadastro realizado com sucesso!');
+			location.href='../frontend/formCadastroUsuario.html';</script>";
 		}
     }
 	catch(PDOException $e) {
@@ -45,10 +47,6 @@
 			</nav>
 		</div>
 	</div>
-	<main>
-		<a class="links-button" href="../frontend/dashboard.html">Retornar para o Dashboard</a>
-	</main>
-
 </body>
 
 </html>

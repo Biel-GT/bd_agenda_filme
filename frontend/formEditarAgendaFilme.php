@@ -1,11 +1,11 @@
 <?php
-include_once "../backend/editar.php";
+/*include_once "../backend/editar.php";
 
 //FILTER_SANITIZE_NUMBER_INT função que só aceita int
 $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 $consulta = $conectar->query("SELECT * FROM login WHERE id = '$id'");
 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,6 +16,7 @@ $linha = $consulta->fetch(PDO::FETCH_ASSOC);
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 
 </head>
 
@@ -23,20 +24,26 @@ $linha = $consulta->fetch(PDO::FETCH_ASSOC);
 	<div class="navBar">
 		<div class="container">
 			<nav>
-				<a href="inicial.php">
+				<a href="index.html">
 					<img src="../src/img/img-navbar.png" alt="">
 				</a>
 			</nav>
 		</div>
 	</div>
 	<main>
+		<?php
+			include_once("../backend/vizualizarFilme.php");
+		?>
 		<h1>Editar Agenda de Filme</h1>
 		<form action="../backend/editarAgendaFilme.php" method="post">
-			Nome: <input type="text" name="nome" value="<?php echo $linha['nome'] ?>" id="nome"><br>
-			Login: <input type="text" name="login" value="<?php echo $linha['login'] ?>" id="login"><br>
-			<input type="hidden" name="id" value="<?php echo $linha['id'] ?>">
-			<input type="submit" value="Editar">
+			Id do filme: <input type="text" name="id_filme" id="id_filme"><br>
+			Nick: <input type="text" name="nick" id="nick"><br>
+			Data para agendamento: <input type="date" name="data_agenda_filme" id="data_agenda_filme"><br>
+
+			<input class="links-button" type="submit" value="Editar">
 		</form>
+		<br><br>
+		<a class="links-button" href="dashboard.html">Voltar</a>
 	</main>
 </body>
 
